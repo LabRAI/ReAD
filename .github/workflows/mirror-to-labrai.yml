@@ -15,15 +15,23 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Mirror repository to LabRAI/ReAD
         env:
           MIRROR_SYNC_TOKEN: ${{ secrets.MIRROR_SYNC }}
           LABRAI_READ_PUSH_TOKEN: ${{ secrets.LABRAI_READ_PUSH_TOKEN }}
-          SOURCE_TOKEN: ${{ github.token }}
         run: |
           TOKEN="${MIRROR_SYNC_TOKEN:-$LABRAI_READ_PUSH_TOKEN}"
-          test -n "$TOKEN"
-          git clone --bare "https://x-access-token:${SOURCE_TOKEN}@github.com/XueqiC/ReAD.git" repo.git
-          cd repo.git
+          if [ -z "$TOKEN" ]; then
+            echo "::error::Missing MIRROR_SYNC repository secret in XueqiC/ReAD."
+            exit 1
+          fi
+          git fetch --prune --tags origin "+refs/heads/*:refs/remotes/origin/*"
           git remote add target "https://x-access-token:${TOKEN}@github.com/LabRAI/ReAD.git"
-          git push --prune target "+refs/heads/*:refs/heads/*" "+refs/tags/*:refs/tags/*"
+          git push --prune target \
+            "+refs/remotes/origin/*:refs/heads/*" \
+            "+refs/tags/*:refs/tags/*"
