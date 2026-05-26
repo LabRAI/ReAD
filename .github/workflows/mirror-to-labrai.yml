@@ -8,6 +8,9 @@ on:
       - "**"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   mirror:
     runs-on: ubuntu-latest
@@ -20,7 +23,7 @@ jobs:
         run: |
           TOKEN="${MIRROR_SYNC_TOKEN:-$LABRAI_READ_PUSH_TOKEN}"
           test -n "$TOKEN"
-          git clone --mirror "https://x-access-token:${SOURCE_TOKEN}@github.com/XueqiC/ReAD.git" repo.git
+          git clone --bare "https://x-access-token:${SOURCE_TOKEN}@github.com/XueqiC/ReAD.git" repo.git
           cd repo.git
-          git remote set-url --push origin "https://x-access-token:${TOKEN}@github.com/LabRAI/ReAD.git"
-          git push --mirror
+          git remote add target "https://x-access-token:${TOKEN}@github.com/LabRAI/ReAD.git"
+          git push --prune target "+refs/heads/*:refs/heads/*" "+refs/tags/*:refs/tags/*"
