@@ -1,0 +1,180 @@
+tasks:
+  code_humaneval:
+    capability: code
+    description: "Write Python functions that satisfy unit tests (HumanEval)."
+    input_format: "Python function signature and docstring with specification."
+    output_format: "Return only the Python code completion."
+    exemplars:
+      - input: "def add(a, b):\n    \"\"\"Return the sum of a and b.\"\"\""
+        output: "    return a + b"
+    dev:
+      source: local
+      path: data/humaneval/HumanEval.jsonl
+      format: humaneval_jsonl
+      limit: 256
+      seed: 1234
+    test:
+      source: local
+      path: data/humaneval/HumanEval.jsonl
+      format: humaneval_jsonl
+    eval_type: humaneval_pass@1
+    requirement_vector:
+      code: 1.0
+
+  math_gsm8k:
+    capability: math
+    description: "Solve grade-school math word problems (GSM8K)."
+    input_format: "Problem statement in natural language."
+    output_format: "Final numeric answer."
+    exemplars:
+      - input: "If you buy 3 apples for $2 each, how much do you pay?"
+        output: "6"
+    dev:
+      source: hf
+      dataset: gsm8k
+      subset: main
+      split: train
+      limit: 256
+      seed: 1234
+      format: gsm8k_jsonl
+    test:
+      source: hf
+      dataset: gsm8k
+      subset: main
+      split: test
+      format: gsm8k_jsonl
+    eval_type: gsm8k_exact
+    requirement_vector:
+      math: 1.0
+
+  general_mmlu:
+    capability: general_knowledge
+    description: "General knowledge QA (MMLU-style)."
+    input_format: "Question with answer choices in the prompt."
+    output_format: "Single letter or short answer string."
+    exemplars:
+      - input: "Which planet is known as the Red Planet? A) Earth B) Mars C) Venus D) Jupiter"
+        output: "B"
+    dev:
+      source: local
+      path: data/mmlu/dev.jsonl
+      format: generic_jsonl
+      limit: 256
+      seed: 1234
+    test:
+      source: local
+      path: data/mmlu/test.jsonl
+      format: generic_jsonl
+    eval_type: logprob
+    requirement_vector:
+      general_knowledge: 1.0
+
+  steerability_ifeval:
+    capability: steerability
+    description: "Instruction following / format adherence (IFEval-style)."
+    input_format: "Instructional prompt with formatting constraints."
+    output_format: "Structured response matching constraints."
+    exemplars:
+      - input: "Return a JSON object with keys name and age."
+        output: "{\"name\": \"Alice\", \"age\": 30}"
+    dev:
+      source: local
+      path: data/ifeval/dev.jsonl
+      format: generic_jsonl
+      limit: 256
+      seed: 1234
+    test:
+      source: local
+      path: data/ifeval/test.jsonl
+      format: generic_jsonl
+    eval_type: logprob
+    requirement_vector:
+      steerability: 1.0
+
+  reasoning_gpqa:
+    capability: reasoning
+    description: "High-difficulty science reasoning (GPQA-style)."
+    input_format: "Question with answer choices in the prompt."
+    output_format: "Single letter or short answer string."
+    exemplars:
+      - input: "Which particle mediates the electromagnetic force? A) photon B) gluon C) W boson D) graviton"
+        output: "A"
+    dev:
+      source: local
+      path: data/gpqa/dev.jsonl
+      format: generic_jsonl
+      limit: 256
+      seed: 1234
+    test:
+      source: local
+      path: data/gpqa/test.jsonl
+      format: generic_jsonl
+    eval_type: logprob
+    requirement_vector:
+      reasoning: 1.0
+
+  tool_use_bfcl:
+    capability: tool_use
+    description: "Tool-call generation (BFCL-style)."
+    input_format: "Tool schema + instruction."
+    output_format: "Single tool call."
+    exemplars:
+      - input: "Return only the function call to get weather for Boston."
+        output: "get_weather(city=\"Boston\")"
+    dev:
+      source: local
+      path: data/bfcl/dev.jsonl
+      format: generic_jsonl
+      limit: 256
+      seed: 1234
+    test:
+      source: local
+      path: data/bfcl/test.jsonl
+      format: generic_jsonl
+    eval_type: logprob
+    requirement_vector:
+      tool_use: 1.0
+
+  long_context_longbench:
+    capability: long_context
+    description: "Long-context QA/summarization (LongBench-style)."
+    input_format: "Long document + query."
+    output_format: "Short answer or summary."
+    exemplars:
+      - input: "Summarize the document in one paragraph."
+        output: "A brief summary of the document."
+    dev:
+      source: local
+      path: data/longbench/dev.jsonl
+      format: generic_jsonl
+      limit: 256
+      seed: 1234
+    test:
+      source: local
+      path: data/longbench/test.jsonl
+      format: generic_jsonl
+    eval_type: logprob
+    requirement_vector:
+      long_context: 1.0
+
+  multilingual_xcopa:
+    capability: multilingual
+    description: "Multilingual causal reasoning (XCOPA-style)."
+    input_format: "Premise with two alternatives (in a non-English language)."
+    output_format: "Single letter or short answer string."
+    exemplars:
+      - input: "¿Por qué se apagó la luz? A) Se cortó la electricidad. B) El sol salió."
+        output: "A"
+    dev:
+      source: local
+      path: data/xcopa/dev.jsonl
+      format: generic_jsonl
+      limit: 256
+      seed: 1234
+    test:
+      source: local
+      path: data/xcopa/test.jsonl
+      format: generic_jsonl
+    eval_type: logprob
+    requirement_vector:
+      multilingual: 1.0

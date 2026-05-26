@@ -1,0 +1,6 @@
+{"id": "tu_001", "prompt": "You can call functions:\n- weather.get(city, unit)\nReturn a single function call to answer: What is the forecast for Boston in celsius?", "meta": {"capability": "tool_use"}}
+{"id": "tu_002", "prompt": "You can call functions:\n- currency.convert(amount, from_code, to_code)\nReturn a single function call to answer: Convert 125 USD to EUR.", "meta": {"capability": "tool_use"}}
+{"id": "tu_003", "prompt": "You can call functions:\n- flights.search(origin, destination, depart_date, cabin)\nReturn a single function call to answer: Find economy flights from SFO to SEA on 2025-03-10.", "meta": {"capability": "tool_use"}}
+{"id": "tu_004", "prompt": "You can call functions:\n- stocks.quote(symbol, detail_level)\nReturn a single function call to answer: Get a detailed quote for MSFT.", "meta": {"capability": "tool_use"}}
+{"id": "tu_005", "prompt": "You can call functions:\n- calendar.create_event(title, date, duration_minutes, location)\nReturn a single function call to answer: Schedule a 45-minute meeting called Project Sync on 2025-02-14 at HQ.", "meta": {"capability": "tool_use"}}
+{"id": "tu_006", "prompt": "You can call functions:\n- maps.distance(origin, destination, mode)\nReturn a single function call to answer: Distance from Los Angeles to San Diego by driving.", "meta": {"capability": "tool_use"}}

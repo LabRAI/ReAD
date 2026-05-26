@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "read-distillation"
+version = "0.1.0"
+description = "Reinforcement-guided capability distillation for large language models."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+  "pyyaml>=6.0",
+  "numpy>=1.23",
+  "torch>=2.1",
+  "transformers>=4.40",
+  "safetensors>=0.4",
+]
+
+[project.optional-dependencies]
+generation = [
+  "vllm>=0.5.0",
+]
+eval = [
+  "datasets>=2.18",
+  "human-eval",
+  "bfcl-eval",
+  "lm-eval[vllm,tasks] @ git+https://github.com/EleutherAI/lm-evaluation-harness.git",
+]
+dev = [
+  "pytest>=7.4",
+]
+
+[tool.setuptools.packages.find]
+include = ["read*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

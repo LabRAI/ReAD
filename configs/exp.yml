@@ -1,0 +1,82 @@
+experiment_name: exp
+
+teacher_model: meta-llama/Llama-3.3-70B-Instruct
+student_model: meta-llama/Llama-3.1-8B-Instruct
+
+capabilities:
+  - general_knowledge
+  - steerability
+  - reasoning
+  - math
+  - code
+  - tool_use
+  - long_context
+  - multilingual
+
+strategies:
+  - name: sft
+    description: "Supervised fine-tuning on teacher outputs."
+  - name: cot
+    description: "Rationale supervision where applicable (reasoning/math/code only)."
+  - name: filter
+    description: "SFT with deterministic quality filtering/rejection sampling."
+  - name: logit
+    description: "Logit matching (teacher-student KL distillation)."
+
+seeds: [1, 2, 3]
+
+budgets_total_tokens:
+  - 500000
+  - 1000000
+  - 2000000
+
+budget_split:
+  teacher_gen_fraction: 0.4
+  student_train_fraction: 0.6
+
+logit_matching:
+  temperature: 1.0
+  alpha: 1.0
+  ce_weight: 0.0
+
+allocation_policy:
+  type: one_hot
+  description: "Each run targets exactly one capability."
+
+token_counting:
+  train_tokens_student:
+    tokenizer: meta-llama/Llama-3.1-8B-Instruct
+    count_units: input_ids
+    count_prompt_tokens: true
+    count_label_tokens: true
+    count_padding_tokens: false
+    packing: false
+    truncation: true
+    max_length: 8192
+  gen_tokens_teacher:
+    tokenizer: meta-llama/Llama-3.3-70B-Instruct
+    count_units: generated_only
+    count_prompt_tokens: false
+    max_new_tokens_by_capability:
+      general_knowledge: 256
+      steerability: 256
+      reasoning: 256
+      math: 512
+      code: 512
+      tool_use: 256
+      long_context: 1024
+      multilingual: 256
+
+distill_prompt_sources_config: configs/distill_prompt_sources.yaml
+eval_config: configs/eval_config.json
+
+paths:
+  checkpoints_root: checkpoints
+  distill_data_root: data/distill
+  runs_root: runs
+  analysis_root: analysis
+  figures_root: figure
+
+baseline:
+  model: meta-llama/Llama-3.1-8B-Instruct
+  runs_dir: runs/S0

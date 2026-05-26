@@ -1,0 +1,6 @@
+-r requirements.txt
+datasets>=2.18
+vllm>=0.5.0
+human-eval
+bfcl-eval
+lm-eval[vllm,tasks] @ git+https://github.com/EleutherAI/lm-evaluation-harness.git

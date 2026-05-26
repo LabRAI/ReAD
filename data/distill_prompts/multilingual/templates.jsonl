@@ -1,0 +1,6 @@
+{"id":"ml_001","prompt":"Translate to English: Bonjour, comment allez-vous?","meta":{"capability":"multilingual","lang":"fr"}}
+{"id":"ml_002","prompt":"Translate to English: Hola, donde esta la estacion de tren?","meta":{"capability":"multilingual","lang":"es"}}
+{"id":"ml_003","prompt":"Translate to English: Saya pergi ke pasar setiap hari.","meta":{"capability":"multilingual","lang":"id"}}
+{"id":"ml_004","prompt":"Translate to English: Jina langu ni Amina na ninaishi Nairobi.","meta":{"capability":"multilingual","lang":"sw"}}
+{"id":"ml_005","prompt":"Translate to English: Bu bir test mesajidir, lutfen cevir.","meta":{"capability":"multilingual","lang":"tr"}}
+{"id":"ml_006","prompt":"Summarize in English: Este informe describe un plan de energia limpia para la ciudad.","meta":{"capability":"multilingual","lang":"es"}}

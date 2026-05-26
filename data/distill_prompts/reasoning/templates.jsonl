@@ -1,0 +1,6 @@
+{"id":"rs_001","prompt":"If all bikes are vehicles and some vehicles are electric, can we conclude some bikes are electric? Answer yes/no and explain.","meta":{"capability":"reasoning"}}
+{"id":"rs_002","prompt":"A is taller than B. B is taller than C. C is taller than D. Who is the second tallest? Explain.","meta":{"capability":"reasoning"}}
+{"id":"rs_003","prompt":"Three friends (Alex, Bo, Casey) have different pets (cat, dog, bird). Alex does not have a cat. Bo does not have a dog. The person with the bird is not Casey. Who has which pet? Explain.","meta":{"capability":"reasoning"}}
+{"id":"rs_004","prompt":"A box contains 2 red, 3 blue, and 5 green balls. You draw two balls without replacement. Is the probability of drawing two blue balls greater than drawing one red then one blue? Explain.","meta":{"capability":"reasoning"}}
+{"id":"rs_005","prompt":"If statement P implies Q, and Q implies R, what can we conclude about P and R? Provide the logical relation.","meta":{"capability":"reasoning"}}
+{"id":"rs_006","prompt":"You have a 3-liter and a 5-liter jug. How do you measure exactly 4 liters? Provide steps.","meta":{"capability":"reasoning"}}

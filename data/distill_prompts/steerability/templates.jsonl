@@ -1,0 +1,6 @@
+{"id":"st_001","prompt":"Respond ONLY in JSON with keys 'title' and 'summary'. Topic: urban gardening.","meta":{"capability":"steerability"}}
+{"id":"st_002","prompt":"Write a 5-step checklist for preparing a laptop for travel. Use numbered lines only.","meta":{"capability":"steerability"}}
+{"id":"st_003","prompt":"Provide the answer as YAML with fields: goal, steps, risks. Topic: migrating a small database.","meta":{"capability":"steerability"}}
+{"id":"st_004","prompt":"Answer in exactly 2 sentences. Question: Why do leaves change color in fall?","meta":{"capability":"steerability"}}
+{"id":"st_005","prompt":"Respond as a table with columns: Item, Purpose, Example. Topic: camping gear.","meta":{"capability":"steerability"}}
+{"id":"st_006","prompt":"Give a response of exactly 120 to 140 characters. Topic: benefits of reading daily.","meta":{"capability":"steerability"}}

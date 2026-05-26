@@ -1,0 +1,47 @@
+hash_policy:
+  eval_hashes_path: data/eval_prompt_hashes.json
+  hash_method: sha256
+  normalize:
+    strip: true
+    collapse_whitespace: true
+    lowercase: true
+
+general_knowledge:
+  source_type: templates
+  template_path: data/distill_prompts/general_knowledge/templates.jsonl
+  description: "Synthetic general-knowledge prompts; not sourced from MMLU-Pro."
+
+steerability:
+  source_type: templates
+  template_path: data/distill_prompts/steerability/templates.jsonl
+  description: "Instruction-following and formatting-control prompts."
+
+reasoning:
+  source_type: templates
+  template_path: data/distill_prompts/reasoning/templates.jsonl
+  description: "Logic and multi-step reasoning prompts."
+
+math:
+  source_type: templates
+  template_path: data/distill_prompts/math/templates.jsonl
+  description: "Math word problems distinct from MATH Hard eval."
+
+code:
+  source_type: templates
+  template_path: data/distill_prompts/code/templates.jsonl
+  description: "Code instruction prompts distinct from HumanEval."
+
+tool_use:
+  source_type: templates
+  template_path: data/distill_prompts/tool_use/templates.jsonl
+  description: "Synthetic tool-call prompts with randomized schemas."
+
+long_context:
+  source_type: templates
+  template_path: data/distill_prompts/long_context/templates.jsonl
+  description: "Long-context summarization/QA prompts with synthetic documents."
+
+multilingual:
+  source_type: templates
+  template_path: data/distill_prompts/multilingual/templates.jsonl
+  description: "Multilingual instruction prompts; ASCII-safe where possible."

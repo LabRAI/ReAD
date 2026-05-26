@@ -1,0 +1,6 @@
+{"id":"cd_001","prompt":"Write a Python function `is_palindrome(s: str) -> bool` that returns True if s reads the same forward and backward after removing spaces.","meta":{"capability":"code"}}
+{"id":"cd_002","prompt":"Write a Python function `merge_sorted(a, b)` that merges two sorted lists into a new sorted list.","meta":{"capability":"code"}}
+{"id":"cd_003","prompt":"Implement `count_words(text: str) -> dict` that returns a dict of word frequencies, case-insensitive.","meta":{"capability":"code"}}
+{"id":"cd_004","prompt":"Write a Python function `moving_average(nums, k)` that returns a list of windowed averages of length k.","meta":{"capability":"code"}}
+{"id":"cd_005","prompt":"Implement `fizzbuzz(n)` returning a list of strings for 1..n with Fizz/Buzz rules.","meta":{"capability":"code"}}
+{"id":"cd_006","prompt":"Write a function `parse_csv_line(line)` that splits a CSV line into fields, handling quoted commas.","meta":{"capability":"code"}}

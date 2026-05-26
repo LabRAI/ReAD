@@ -1,0 +1,6 @@
+{"id":"mt_001","prompt":"A store sells pencils at $0.30 each. If you buy 12 pencils, what is the total cost before tax? Show your work.","meta":{"capability":"math"}}
+{"id":"mt_002","prompt":"Solve for x: 3x + 5 = 26. Show steps.","meta":{"capability":"math"}}
+{"id":"mt_003","prompt":"A rectangle has perimeter 54 and length 16. Find the width.","meta":{"capability":"math"}}
+{"id":"mt_004","prompt":"A car travels 180 miles in 3 hours. What is its average speed in miles per hour?","meta":{"capability":"math"}}
+{"id":"mt_005","prompt":"If a recipe calls for 2.5 cups of flour for 10 servings, how many cups are needed for 14 servings?","meta":{"capability":"math"}}
+{"id":"mt_006","prompt":"Compute the value of (7^2) - (5^2) and show the steps.","meta":{"capability":"math"}}

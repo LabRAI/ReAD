@@ -1,0 +1,43 @@
+# This repository is an intentionally curated, double-blind artifact.
+# Everything is ignored by default; only the public implementation surface is
+# unignored below.
+*
+
+!.gitignore
+!.gitattributes
+!README.md
+!LICENSE
+!pyproject.toml
+!requirements.txt
+!requirements-dev.txt
+!requirements-eval.txt
+
+!read/
+!read/*.py
+
+!scripts/
+!scripts/build_eval_hashes.py
+!scripts/read_build_probes.py
+!scripts/read_collect_gphi.py
+!scripts/read_generate_batch.py
+!scripts/read_train.py
+!scripts/train_requirement_identifier.py
+
+!configs/
+!configs/distill_prompt_sources.yaml
+!configs/eval_config.json
+!configs/exp.yml
+!configs/read.yml
+!configs/task_cards.yaml
+
+!data/
+!data/distill_prompts/
+!data/distill_prompts/README.md
+!data/distill_prompts/*/
+!data/distill_prompts/*/templates.jsonl
+
+!examples/
+!examples/*.py
+
+!tests/
+!tests/*.py

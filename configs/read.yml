@@ -1,0 +1,97 @@
+experiment_name: read
+seed: 1
+
+exp_config: configs/exp.yml
+prompt_source_config: configs/distill_prompt_sources.yaml
+eval_hashes: data/eval_prompt_hashes.json
+
+teacher:
+  model: meta-llama/Llama-3.3-70B-Instruct
+  dtype: float16
+  tp: 4
+  max_model_len: 8192
+  trust_remote_code: false
+
+student:
+  model: meta-llama/Llama-3.1-8B-Instruct
+  dtype: float16
+  max_length: 2048
+  trust_remote_code: false
+  batch_size: 1
+  gradient_accumulation_steps: 1
+  learning_rate: 2e-5
+  weight_decay: 0.0
+  log_every_steps: 50
+
+capabilities:
+  - general_knowledge
+  - steerability
+  - reasoning
+  - math
+  - code
+  - tool_use
+  - long_context
+  - multilingual
+
+task_cards: configs/task_cards.yaml
+task_name: code_humaneval
+
+budget:
+  total_tokens: 20000
+  gen_tokens: 8000
+  train_tokens: 12000
+
+interval:
+  gen_tokens: 0
+  train_tokens: 50000
+
+generation:
+  temperature: 0.2
+  top_p: 0.95
+  top_k: 0
+  max_new_tokens: 256
+  batch_size: 4
+
+probe:
+  num_per_capability: 32
+  temperature: 0.0
+  top_p: 1.0
+  max_new_tokens: 256
+  batch_size: 8
+
+allocation:
+  max_support: 2
+  weight_grid: [0.25, 0.5, 0.75]
+  top_k: 3
+  max_candidates: 50
+  include_one_hot: false
+
+bandit:
+  num_models: 5
+  hidden_dim: 64
+  lr: 0.001
+  train_steps: 200
+  batch_size: 64
+  kappa: 1.0
+  kappa_decay: 0.7
+  warmup_steps: 5
+
+reward:
+  beta: 0.5
+  lambda_cost: 0.00001
+  spillover_top_k: 3
+
+# token counting rules for student training
+# mirrors configs/exp.yml token_counting.train_tokens_student
+# to keep budget accounting consistent
+
+token_counting:
+  count_prompt_tokens: true
+  count_label_tokens: true
+  count_padding_tokens: false
+
+eval:
+  checkpoint_fraction: 0.1
+  every_intervals: 0
+  max_new_tokens: 256
+  batch_size: 8
