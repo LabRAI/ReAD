@@ -12,6 +12,10 @@
 !requirements-dev.txt
 !requirements-eval.txt
 
+!.github/
+!.github/workflows/
+!.github/workflows/mirror-to-labrai.yml
+
 !read/
 !read/*.py
 

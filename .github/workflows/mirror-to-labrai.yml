@@ -1,0 +1,23 @@
+name: Mirror to LabRAI
+
+on:
+  push:
+    branches:
+      - "**"
+    tags:
+      - "**"
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror repository to LabRAI/ReAD
+        env:
+          TOKEN: ${{ secrets.LABRAI_READ_PUSH_TOKEN }}
+        run: |
+          test -n "$TOKEN"
+          git clone --mirror https://github.com/XueqiC/ReAD.git repo.git
+          cd repo.git
+          git remote set-url --push origin "https://x-access-token:${TOKEN}@github.com/LabRAI/ReAD.git"
+          git push --mirror
