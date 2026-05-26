@@ -15,9 +15,10 @@ jobs:
       - name: Mirror repository to LabRAI/ReAD
         env:
           TOKEN: ${{ secrets.LABRAI_READ_PUSH_TOKEN }}
+          SOURCE_TOKEN: ${{ github.token }}
         run: |
           test -n "$TOKEN"
-          git clone --mirror https://github.com/XueqiC/ReAD.git repo.git
+          git clone --mirror "https://x-access-token:${SOURCE_TOKEN}@github.com/XueqiC/ReAD.git" repo.git
           cd repo.git
           git remote set-url --push origin "https://x-access-token:${TOKEN}@github.com/LabRAI/ReAD.git"
           git push --mirror
