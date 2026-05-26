@@ -134,15 +134,3 @@ python scripts/train_requirement_identifier.py \
 ```
 
 Then set `requirement_model: checkpoints/read_gphi/gphi.pt` in the corresponding task card.
-
-## Double-Blind Artifact Hygiene
-
-The Git ignore rules are intentionally strict. The repository excludes:
-
-- the paper PDF and PDF metadata
-- notebooks, scratch notes, backup logs, and generated results
-- benchmark datasets and local copies of public datasets
-- private cluster scripts, absolute paths, usernames, emails, and affiliations
-- model checkpoints and generated distillation/evaluation outputs
-
-Before release, audit the tracked files with `git grep`, a secret scanner, and a manual review of generated manifests.
