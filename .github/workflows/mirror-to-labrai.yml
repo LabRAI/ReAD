@@ -14,9 +14,11 @@ jobs:
     steps:
       - name: Mirror repository to LabRAI/ReAD
         env:
-          TOKEN: ${{ secrets.LABRAI_READ_PUSH_TOKEN }}
+          MIRROR_SYNC_TOKEN: ${{ secrets.MIRROR_SYNC }}
+          LABRAI_READ_PUSH_TOKEN: ${{ secrets.LABRAI_READ_PUSH_TOKEN }}
           SOURCE_TOKEN: ${{ github.token }}
         run: |
+          TOKEN="${MIRROR_SYNC_TOKEN:-$LABRAI_READ_PUSH_TOKEN}"
           test -n "$TOKEN"
           git clone --mirror "https://x-access-token:${SOURCE_TOKEN}@github.com/XueqiC/ReAD.git" repo.git
           cd repo.git
